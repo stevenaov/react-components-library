@@ -1,0 +1,1029 @@
+/* ============================================================
+   Lumina UI — estilos de la librería de componentes
+   Importado junto a la librería: `import "lumina-ui/ui.css"`
+   ============================================================ */
+
+/* ---------- Button ---------- */
+.lu-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  padding: 10px 22px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform var(--dur) var(--ease-spring),
+    box-shadow var(--dur) var(--ease-out),
+    background var(--dur),
+    border-color var(--dur),
+    opacity var(--dur);
+}
+.lu-button:active {
+  transform: scale(0.96);
+}
+.lu-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+.lu-button--primary {
+  background: var(--grad-accent);
+  color: #fff;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.25) inset,
+    var(--shadow-glow);
+}
+.lu-button--primary:hover:not(:disabled) {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+}
+.lu-button--secondary {
+  background: var(--bg-elev-2);
+  border-color: var(--border-strong);
+  color: var(--text-1);
+}
+.lu-button--secondary:hover:not(:disabled) {
+  background: var(--bg-elev-3);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+.lu-button--ghost {
+  background: transparent;
+  color: var(--text-2);
+}
+.lu-button--ghost:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-1);
+}
+.lu-button--danger {
+  background: rgba(251, 113, 133, 0.14);
+  color: var(--danger);
+  border-color: rgba(251, 113, 133, 0.3);
+}
+.lu-button--danger:hover:not(:disabled) {
+  background: rgba(251, 113, 133, 0.24);
+}
+.lu-button--sm {
+  padding: 6px 14px;
+  font-size: 0.8125rem;
+}
+.lu-button--lg {
+  padding: 14px 30px;
+  font-size: 1rem;
+}
+.lu-button__shine {
+  position: relative;
+  overflow: hidden;
+}
+.lu-button__shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.35) 50%, transparent 60%);
+  transform: translateX(-120%);
+  transition: transform 0.7s var(--ease-out);
+}
+.lu-button__shine:hover::after {
+  transform: translateX(120%);
+}
+
+/* ---------- Badge ---------- */
+.lu-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: var(--r-pill);
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border: 1px solid var(--border);
+  background: var(--bg-elev-2);
+  color: var(--text-2);
+}
+.lu-badge--accent {
+  background: rgba(139, 92, 246, 0.14);
+  border-color: rgba(139, 92, 246, 0.35);
+  color: #c4b5fd;
+}
+.lu-badge--success {
+  background: rgba(52, 211, 153, 0.12);
+  border-color: rgba(52, 211, 153, 0.3);
+  color: var(--success);
+}
+.lu-badge--warning {
+  background: rgba(251, 191, 36, 0.12);
+  border-color: rgba(251, 191, 36, 0.3);
+  color: var(--warning);
+}
+.lu-badge--danger {
+  background: rgba(251, 113, 133, 0.12);
+  border-color: rgba(251, 113, 133, 0.3);
+  color: var(--danger);
+}
+.lu-badge--dot::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ---------- Card ---------- */
+.lu-card {
+  position: relative;
+  background: linear-gradient(180deg, var(--bg-elev-2), var(--bg-elev-1));
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 24px;
+  overflow: hidden;
+  transition:
+    transform var(--dur) var(--ease-out),
+    border-color var(--dur),
+    box-shadow var(--dur);
+}
+.lu-card--hover:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-1);
+}
+.lu-card--glow::before {
+  content: "";
+  position: absolute;
+  inset: -60% 0 auto 0;
+  height: 140%;
+  background: radial-gradient(60% 60% at 50% 0%, rgba(139, 92, 246, 0.18), transparent 70%);
+  pointer-events: none;
+}
+.lu-card__title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.lu-card__desc {
+  margin-top: 6px;
+  font-size: 0.875rem;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+/* ---------- Input / Textarea ---------- */
+.lu-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+.lu-field__label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-2);
+}
+.lu-input,
+.lu-textarea {
+  width: 100%;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  padding: 11px 16px;
+  font-size: 0.9375rem;
+  color: var(--text-1);
+  transition:
+    border-color var(--dur),
+    box-shadow var(--dur),
+    background var(--dur);
+}
+.lu-input::placeholder,
+.lu-textarea::placeholder {
+  color: var(--text-3);
+}
+.lu-input:hover,
+.lu-textarea:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+}
+.lu-input:focus,
+.lu-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.22);
+  background: var(--bg-elev-2);
+}
+.lu-textarea {
+  resize: vertical;
+  min-height: 96px;
+  line-height: 1.55;
+}
+.lu-field__error {
+  font-size: 0.75rem;
+  color: var(--danger);
+}
+
+/* ---------- Switch ---------- */
+.lu-switch {
+  position: relative;
+  width: 46px;
+  height: 26px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border-strong);
+  background: var(--bg-elev-3);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background var(--dur) var(--ease-out),
+    border-color var(--dur);
+}
+.lu-switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  transition: transform var(--dur) var(--ease-spring);
+}
+.lu-switch--on {
+  background: var(--grad-accent);
+  border-color: transparent;
+}
+.lu-switch--on::after {
+  transform: translateX(20px);
+}
+
+/* ---------- Checkbox ---------- */
+.lu-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.9375rem;
+}
+.lu-checkbox__box {
+  width: 20px;
+  height: 20px;
+  border-radius: 7px;
+  border: 1.5px solid var(--border-strong);
+  background: var(--bg-elev-1);
+  display: grid;
+  place-items: center;
+  transition:
+    background var(--dur-fast),
+    border-color var(--dur-fast),
+    transform var(--dur-fast) var(--ease-spring);
+  flex-shrink: 0;
+}
+.lu-checkbox__box svg {
+  width: 12px;
+  height: 12px;
+  stroke: #fff;
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transform: scale(0.5);
+  transition:
+    opacity var(--dur-fast),
+    transform var(--dur-fast) var(--ease-spring);
+}
+.lu-checkbox--checked .lu-checkbox__box {
+  background: var(--grad-accent);
+  border-color: transparent;
+}
+.lu-checkbox--checked .lu-checkbox__box svg {
+  opacity: 1;
+  transform: scale(1);
+}
+.lu-checkbox:active .lu-checkbox__box {
+  transform: scale(0.9);
+}
+
+/* ---------- Radio ---------- */
+.lu-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.9375rem;
+}
+.lu-radio__circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-strong);
+  background: var(--bg-elev-1);
+  display: grid;
+  place-items: center;
+  transition: border-color var(--dur-fast);
+  flex-shrink: 0;
+}
+.lu-radio__circle::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--grad-accent);
+  transform: scale(0);
+  transition: transform var(--dur) var(--ease-spring);
+}
+.lu-radio--checked .lu-radio__circle {
+  border-color: var(--accent);
+}
+.lu-radio--checked .lu-radio__circle::after {
+  transform: scale(1);
+}
+
+/* ---------- Select ---------- */
+.lu-select {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 200px;
+}
+.lu-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  padding: 11px 16px;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition:
+    border-color var(--dur),
+    box-shadow var(--dur);
+}
+.lu-select__trigger:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+}
+.lu-select--open .lu-select__trigger {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.22);
+}
+.lu-select__chevron {
+  width: 16px;
+  height: 16px;
+  stroke: var(--text-2);
+  stroke-width: 2;
+  fill: none;
+  transition: transform var(--dur) var(--ease-out);
+}
+.lu-select--open .lu-select__chevron {
+  transform: rotate(180deg);
+}
+.lu-select__menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  padding: 6px;
+  z-index: 30;
+  box-shadow: var(--shadow-1);
+  transform-origin: top;
+  animation: lu-pop var(--dur) var(--ease-out);
+}
+.lu-select__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: var(--r-sm);
+  font-size: 0.875rem;
+  cursor: pointer;
+  color: var(--text-2);
+  transition:
+    background var(--dur-fast),
+    color var(--dur-fast);
+}
+.lu-select__option:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-1);
+}
+.lu-select__option--selected {
+  color: var(--text-1);
+  background: rgba(139, 92, 246, 0.14);
+}
+
+/* ---------- Slider ---------- */
+.lu-slider {
+  width: 100%;
+  max-width: 280px;
+}
+.lu-slider__track {
+  position: relative;
+  height: 6px;
+  border-radius: var(--r-pill);
+  background: var(--bg-elev-3);
+  cursor: pointer;
+}
+.lu-slider__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: var(--r-pill);
+  background: var(--grad-accent);
+}
+.lu-slider__thumb {
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -50%);
+  transition: box-shadow var(--dur-fast);
+}
+.lu-slider__thumb:hover,
+.lu-slider--active .lu-slider__thumb {
+  box-shadow:
+    0 0 0 6px rgba(139, 92, 246, 0.25),
+    0 2px 8px rgba(0, 0, 0, 0.5);
+}
+.lu-slider__value {
+  margin-top: 10px;
+  font-size: 0.8125rem;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Modal ---------- */
+.lu-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 4, 8, 0.7);
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  z-index: 100;
+  animation: lu-fade var(--dur) var(--ease-out);
+}
+.lu-modal {
+  width: min(440px, calc(100vw - 48px));
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-1);
+  animation: lu-modal-in var(--dur-slow) var(--ease-spring);
+}
+.lu-modal__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.lu-modal__desc {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+.lu-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+/* ---------- Dropdown ---------- */
+.lu-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.lu-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 200px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  padding: 6px;
+  box-shadow: var(--shadow-1);
+  z-index: 30;
+  transform-origin: top left;
+  animation: lu-pop var(--dur) var(--ease-out);
+}
+.lu-dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  border: none;
+  background: none;
+  border-radius: var(--r-sm);
+  font-size: 0.875rem;
+  color: var(--text-2);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background var(--dur-fast),
+    color var(--dur-fast);
+}
+.lu-dropdown__item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-1);
+}
+.lu-dropdown__item--danger {
+  color: var(--danger);
+}
+.lu-dropdown__item--danger:hover {
+  background: rgba(251, 113, 133, 0.12);
+}
+.lu-dropdown__sep {
+  height: 1px;
+  background: var(--border);
+  margin: 6px 4px;
+}
+
+/* ---------- Tabs ---------- */
+.lu-tabs {
+  display: inline-flex;
+  gap: 4px;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 4px;
+}
+.lu-tabs__tab {
+  position: relative;
+  border: none;
+  background: none;
+  padding: 8px 18px;
+  border-radius: var(--r-pill);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-2);
+  cursor: pointer;
+  transition:
+    color var(--dur),
+    background var(--dur);
+}
+.lu-tabs__tab:hover {
+  color: var(--text-1);
+}
+.lu-tabs__tab--active {
+  background: var(--bg-elev-3);
+  color: var(--text-1);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Tooltip ---------- */
+.lu-tooltip {
+  position: relative;
+  display: inline-flex;
+}
+.lu-tooltip__bubble {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  transform-origin: bottom center;
+  background: var(--bg-elev-3);
+  border: 1px solid var(--border-strong);
+  color: var(--text-1);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity var(--dur-fast),
+    transform var(--dur) var(--ease-spring);
+  z-index: 40;
+}
+.lu-tooltip--visible .lu-tooltip__bubble {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* ---------- Accordion ---------- */
+.lu-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 460px;
+}
+.lu-accordion__item {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: border-color var(--dur);
+}
+.lu-accordion__item--open {
+  border-color: var(--border-strong);
+}
+.lu-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 18px;
+  background: none;
+  border: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+}
+.lu-accordion__icon {
+  width: 16px;
+  height: 16px;
+  stroke: var(--text-2);
+  stroke-width: 2;
+  fill: none;
+  flex-shrink: 0;
+  transition: transform var(--dur) var(--ease-out);
+}
+.lu-accordion__item--open .lu-accordion__icon {
+  transform: rotate(45deg);
+}
+.lu-accordion__content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur) var(--ease-out);
+}
+.lu-accordion__item--open .lu-accordion__content {
+  grid-template-rows: 1fr;
+}
+.lu-accordion__content-inner {
+  overflow: hidden;
+}
+.lu-accordion__content p {
+  padding: 0 18px 16px;
+  font-size: 0.875rem;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+/* ---------- Avatar ---------- */
+.lu-avatar {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--grad-accent);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+  transition: transform var(--dur) var(--ease-spring);
+}
+.lu-avatar:hover {
+  transform: scale(1.08);
+}
+.lu-avatar--sm {
+  width: 32px;
+  height: 32px;
+  font-size: 0.75rem;
+}
+.lu-avatar--lg {
+  width: 60px;
+  height: 60px;
+  font-size: 1.125rem;
+}
+.lu-avatar__img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.lu-avatar__status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-elev-1);
+  background: var(--success);
+}
+.lu-avatar__status--offline {
+  background: var(--text-3);
+}
+
+/* ---------- AvatarGroup ---------- */
+.lu-avatar-group {
+  display: inline-flex;
+}
+.lu-avatar-group .lu-avatar {
+  border: 2px solid var(--bg);
+  margin-left: -10px;
+  transition:
+    transform var(--dur) var(--ease-spring),
+    margin var(--dur);
+}
+.lu-avatar-group .lu-avatar:first-child {
+  margin-left: 0;
+}
+.lu-avatar-group:hover .lu-avatar {
+  margin-left: 2px;
+}
+.lu-avatar-group:hover .lu-avatar:first-child {
+  margin-left: 0;
+}
+
+/* ---------- Progress ---------- */
+.lu-progress {
+  width: 100%;
+  max-width: 280px;
+}
+.lu-progress__track {
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: var(--bg-elev-3);
+  overflow: hidden;
+}
+.lu-progress__fill {
+  height: 100%;
+  border-radius: var(--r-pill);
+  background: var(--grad-accent);
+  transition: width var(--dur-slow) var(--ease-out);
+}
+.lu-progress__label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: var(--text-2);
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Spinner ---------- */
+.lu-spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.12);
+  border-top-color: var(--accent);
+  animation: lu-spin 0.8s linear infinite;
+}
+.lu-spinner--lg {
+  width: 40px;
+  height: 40px;
+  border-width: 4px;
+}
+
+/* ---------- Toast ---------- */
+.lu-toaster {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 200;
+}
+.lu-toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 280px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  padding: 13px 16px;
+  box-shadow: var(--shadow-1);
+  animation: lu-toast-in var(--dur-slow) var(--ease-spring);
+  font-size: 0.875rem;
+}
+.lu-toast--leaving {
+  animation: lu-toast-out var(--dur-fast) var(--ease-out) forwards;
+}
+.lu-toast__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.lu-toast--success .lu-toast__dot {
+  background: var(--success);
+  box-shadow: 0 0 12px var(--success);
+}
+.lu-toast--error .lu-toast__dot {
+  background: var(--danger);
+  box-shadow: 0 0 12px var(--danger);
+}
+.lu-toast--info .lu-toast__dot {
+  background: var(--accent-2);
+  box-shadow: 0 0 12px var(--accent-2);
+}
+.lu-toast__close {
+  margin-left: auto;
+  border: none;
+  background: none;
+  color: var(--text-3);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 2px;
+  border-radius: 6px;
+}
+.lu-toast__close:hover {
+  color: var(--text-1);
+}
+
+/* ---------- Alert ---------- */
+.lu-alert {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  max-width: 440px;
+  border-radius: var(--r-md);
+  padding: 14px 16px;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  border: 1px solid;
+}
+.lu-alert__icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+}
+.lu-alert--info {
+  background: rgba(34, 211, 238, 0.08);
+  border-color: rgba(34, 211, 238, 0.25);
+  color: #a5f3fc;
+}
+.lu-alert--success {
+  background: rgba(52, 211, 153, 0.08);
+  border-color: rgba(52, 211, 153, 0.25);
+  color: #a7f3d0;
+}
+.lu-alert--warning {
+  background: rgba(251, 191, 36, 0.08);
+  border-color: rgba(251, 191, 36, 0.25);
+  color: #fde68a;
+}
+.lu-alert--danger {
+  background: rgba(251, 113, 133, 0.08);
+  border-color: rgba(251, 113, 133, 0.25);
+  color: #fecdd3;
+}
+.lu-alert__title {
+  font-weight: 600;
+  color: var(--text-1);
+}
+
+/* ---------- Skeleton ---------- */
+.lu-skeleton {
+  border-radius: var(--r-sm);
+  background: linear-gradient(90deg, var(--bg-elev-2) 25%, var(--bg-elev-3) 50%, var(--bg-elev-2) 75%);
+  background-size: 200% 100%;
+  animation: lu-shimmer 1.4s infinite;
+}
+
+/* ---------- Rating ---------- */
+.lu-rating {
+  display: inline-flex;
+  gap: 4px;
+}
+.lu-rating__star {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--bg-elev-3);
+  transition: transform var(--dur-fast) var(--ease-spring);
+}
+.lu-rating__star:hover {
+  transform: scale(1.2);
+}
+.lu-rating__star--on {
+  color: var(--warning);
+}
+
+/* ---------- Breadcrumbs ---------- */
+.lu-breadcrumbs {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  flex-wrap: wrap;
+}
+.lu-breadcrumbs__item {
+  color: var(--text-2);
+  transition: color var(--dur-fast);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.lu-breadcrumbs__item:hover {
+  color: var(--text-1);
+}
+.lu-breadcrumbs__item--current {
+  color: var(--text-1);
+  font-weight: 500;
+  cursor: default;
+}
+.lu-breadcrumbs__sep {
+  color: var(--text-3);
+  font-size: 0.75rem;
+}
+
+/* ---------- Pagination ---------- */
+.lu-pagination {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+.lu-pagination__page {
+  min-width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  background: none;
+  color: var(--text-2);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast),
+    color var(--dur-fast),
+    border-color var(--dur-fast);
+}
+.lu-pagination__page:hover {
+  background: var(--bg-elev-2);
+  color: var(--text-1);
+}
+.lu-pagination__page--active {
+  background: var(--grad-accent);
+  color: #fff;
+  font-weight: 600;
+}
+.lu-pagination__dots {
+  color: var(--text-3);
+  padding: 0 2px;
+}
+
+/* ---------- Animaciones compartidas ---------- */
+@keyframes lu-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes lu-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+@keyframes lu-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes lu-pop {
+  from {
+    opacity: 0;
+    transform: scaleY(0.9);
+  }
+}
+@keyframes lu-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+}
+@keyframes lu-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+@keyframes lu-toast-out {
+  to {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
